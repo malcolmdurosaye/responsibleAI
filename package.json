@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "node scripts/fix-bin.js",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "diag": "node -v && npm -v && node -e \"console.log('OS:',process.platform);\" && ls -la node_modules/.bin || dir node_modules\\.bin"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -16,6 +18,8 @@
     "tailwindcss": "^3.4.0",
     "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0"
+  },
+  "engines": {
+    "node": "20.x"
   }
-  
 }
