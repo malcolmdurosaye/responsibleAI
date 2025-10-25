@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-  "dev": "vite",
-  "build": "node scripts/build.mjs",
-  "preview": "vite preview"
+    "dev": "vite",
+    "build": "node scripts/build.mjs",
+    "vercel-build": "node scripts/build.mjs",  // fallback some presets look for
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -17,7 +18,5 @@
     "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0"
   },
-  "engines": {
-    "node": "20.x"
-  }
+  "engines": { "node": "20.x" }
 }
