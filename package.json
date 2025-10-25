@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
   "dev": "vite",
-  "build": "node -e \"const fs=require('fs');const p='node_modules/.bin/vite';if(fs.existsSync(p)){try{const s=fs.readFileSync(p,'utf8').replace(/\\r\\n/g,'\\n');fs.writeFileSync(p,s,'utf8');}catch(e){}try{fs.chmodSync(p,0o755);}catch(e){}console.log('[build] repaired vite bin');}else{console.log('[build] vite bin not found, skipping repair');}}\" && vite build",
-  "preview": "vite preview",
-  "diag": "node -v && npm -v && node -e \"console.log('OS:',process.platform);\" && ls -la node_modules/.bin || dir node_modules\\.bin"
+  "build": "node scripts/build.mjs",
+  "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
