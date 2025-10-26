@@ -316,7 +316,7 @@ export default function App() {
                 rel="noreferrer"
                 aria-label="Spotify"
               >
-                <img src="/images/Spotifyw.svg" alt="" className="w-20 h-20" />
+                <img src="/images/Spotifyw.svg" alt="" className="w-10 h-10" />
               </a>
             </div>
           </div>
