@@ -81,9 +81,9 @@ export default function App() {
         summary:
           "With the AI Act officially in effect, Europe has drawn a hard line. If you're building or deploying AI in the EU, it must be safe, explainable, and rights-respecting.",
         tags: ["Policy", "Governance", "Europe"],
-        date: "2025-09-28",
+        date: "2025-06-02",
         img: "/images/new1.png",
-        src: "https://malcolmdurosaye.substack.com/p/ai-goes-political",
+        src: "https://malcolmdurosaye.substack.com/p/ai-goes-political-power-policy-and",
       },
       {
         id: "n2",
@@ -92,9 +92,9 @@ export default function App() {
         summary:
           "From model safety scorecards on Azure to emerging AI laws in Thailand and civil-society action in India, a global snapshot of transparent governance in action.",
         tags: ["Safety", "Transparency", "Global"],
-        date: "2025-09-21",
+        date: "2025-06-10",
         img: "/images/new2.png",
-        src: "https://malcolmdurosaye.substack.com/p/microsoft-model-safety-and-ai-regulation",
+        src: "https://malcolmdurosaye.substack.com/p/while-governments-regulate-ai-microsoft",
       },
       {
         id: "n3",
@@ -102,9 +102,9 @@ export default function App() {
         summary:
           "We’re zeroing in on a startling reality: training a single AI model can emit as much carbon as five cars in their lifetimes.",
         tags: ["Sustainability", "Climate", "AI Impact"],
-        date: "2025-09-14",
+        date: "2025-06-20",
         img: "/images/new3.png",
-        src: "https://malcolmdurosaye.substack.com/p/ai-carbon-cost",
+        src: "https://malcolmdurosaye.substack.com/p/addressing-ais-carbon-cost-five-cars",
       },
       {
         id: "n4",
@@ -113,9 +113,9 @@ export default function App() {
         summary:
           "The future of AI governance isn’t just being drafted in government offices; it’s being tested in boardrooms, shaped by CEOs and challenged by hackers.",
         tags: ["Risk", "Governance", "Leadership"],
-        date: "2025-09-07",
+        date: "2025-06-27",
         img: "/images/new4.png",
-        src: "https://malcolmdurosaye.substack.com/p/emerging-ai-governance-risks",
+        src: "https://malcolmdurosaye.substack.com/p/emerging-risks-and-disconnects-overconfidence",
       },
       {
         id: "n5",
@@ -123,9 +123,9 @@ export default function App() {
         summary:
           "The U.S. Senate has rejected a key provision in Trump’s sweeping budget bill, a clause that would have blocked states from enforcing their own AI laws.",
         tags: ["Policy", "US", "Regulation"],
-        date: "2025-08-31",
+        date: "2025-07-04",
         img: "/images/new5.png",
-        src: "https://malcolmdurosaye.substack.com/p/inside-the-big-beautiful-bill",
+        src: "https://malcolmdurosaye.substack.com/p/inside-the-big-beautiful-bill-states",
       },
       // Add more as you publish; Search and Content will auto-use them
     ],
@@ -143,9 +143,9 @@ export default function App() {
           "Evaluates how well human rights, fairness, and accountability are built into AI policies and practices.",
         ],
         openHref:
-          "https://unesdoc.unesco.org/ark:/48223/pf0000381138",
+          "https://unesdoc.unesco.org/ark:/48223/pf0000385198",
         downloadHref:
-          "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_1dcbf7d8-b0a6-4a16-9a68-2a83a3fa5b53?_=0381138eng.pdf",
+          "https://unesdoc.unesco.org/ark:/48223/pf0000385198",
       },
       {
         id: "r2",
@@ -155,9 +155,9 @@ export default function App() {
           "Spot ethical risks early and develop strategies to address them.",
           "Promote responsible decision-making through documentation and public trust.",
         ],
-        openHref: "https://unesdoc.unesco.org/ark:/48223/pf0000381139",
+        openHref: "https://unesdoc.unesco.org/ark:/48223/pf0000386276",
         downloadHref:
-          "https://unesdoc.unesco.org/in/rest/annotationSVC/DownloadWatermarkedAttachment/attach_import_XXXXX.pdf",
+          "https://unesdoc.unesco.org/ark:/48223/pf0000386276",
       },
       {
         id: "r3",
@@ -167,8 +167,8 @@ export default function App() {
           "Visualizes strengths and gaps using open datasets.",
           "Helps identify growth and collaboration opportunities.",
         ],
-        openHref: "https://vibrancy.ai",
-        downloadHref: "https://vibrancy.ai/export.csv",
+        openHref: "https://hai.stanford.edu/ai-index/global-vibrancy-tool",
+        downloadHref: "https://hai.stanford.edu/ai-index/global-vibrancy-tool",
       },
       {
         id: "r4",
@@ -181,7 +181,7 @@ export default function App() {
         openHref:
           "https://www.nist.gov/itl/ai-risk-management-framework",
         downloadHref:
-          "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+          "https://www.nist.gov/itl/ai-risk-management-framework",
       },
       {
         id: "r5",
@@ -191,8 +191,8 @@ export default function App() {
           "Curated datasets, reusable playbooks, and a common model catalog.",
           "Accelerates pilot-to-production with compliance and interoperability.",
         ],
-        openHref: "https://unicc.org", // placeholder
-        downloadHref: "", // none yet
+        openHref: "https://www.unicc.org/ai-sandbox-as-a-service/", 
+        downloadHref: "https://www.unicc.org/ai-sandbox-as-a-service/", 
       },
     ],
     []
@@ -248,7 +248,7 @@ export default function App() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 rounded-xl bg-slate-100 p-1">
             <NavItem label="Home" active={page === "home"} onClick={() => go("home")} />
-            <NavItem label="Newsletter Editions" active={page === "content"} onClick={() => go("content")} />
+            <NavItem label="Newsletter" active={page === "content"} onClick={() => go("content")} />
             <NavItem label="Resources" active={page === "resources"} onClick={() => go("resources")} />
             <NavItem label="Search" active={page === "search"} onClick={() => go("search")} />
           </nav>
