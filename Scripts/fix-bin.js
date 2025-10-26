@@ -18,7 +18,8 @@ function fixBin(p) {
 
 const bins = [
   path.join('node_modules', '.bin', 'vite'),
-  // add other bins here if needed
+  path.join('node_modules', '.bin', 'tailwindcss'),
+  path.join('node_modules', '.bin', 'postcss'),
 ];
 
 bins.forEach(fixBin);

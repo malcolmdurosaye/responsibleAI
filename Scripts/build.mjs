@@ -1,3 +1,4 @@
+// scripts/build.mjs
 (async () => {
   try {
     const { build } = await import('vite');

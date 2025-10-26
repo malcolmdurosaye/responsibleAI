@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build.mjs",
-    "vercel-build": "node scripts/build.mjs",
+    "build": "node scripts/fix-bin.js && vite build",
+    "vercel-build": "node scripts/fix-bin.js && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
