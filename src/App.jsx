@@ -44,6 +44,7 @@ function subscribeToSubstack(email) {
 export default function App() {
   const [page, setPage] = useState("home");
   const [query, setQuery] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false); // mobile hamburger
 
   // ---- Simple hash-based routing so browser Back/Forward works ----
   useEffect(() => {
@@ -67,10 +68,13 @@ export default function App() {
 
   // Inject favicon
   useEffect(() => {
-    ensureFavicon("/images/logo11.png"); // change if you prefer a dedicated /favicon.ico or /images/favicon.png
+    ensureFavicon("/images/logo11.png");
   }, []);
 
-  const go = (p) => setPage(p); // use setPage; hash sync handled by effect above
+  const go = (p) => {
+    setPage(p);
+    setMenuOpen(false);
+  };
 
   /* ---------------- Data: newsletters + resources (single source) ---------------- */
   const newsletters = useMemo(
@@ -191,8 +195,8 @@ export default function App() {
           "Curated datasets, reusable playbooks, and a common model catalog.",
           "Accelerates pilot-to-production with compliance and interoperability.",
         ],
-        openHref: "https://www.unicc.org/ai-sandbox-as-a-service/", 
-        downloadHref: "https://www.unicc.org/ai-sandbox-as-a-service/", 
+        openHref: "https://www.unicc.org/ai-sandbox-as-a-service/",
+        downloadHref: "https://www.unicc.org/ai-sandbox-as-a-service/",
       },
     ],
     []
@@ -253,20 +257,32 @@ export default function App() {
             <NavItem label="Search" active={page === "search"} onClick={() => go("search")} />
           </nav>
 
-          {/* Mobile Dropdown Navigation */}
+          {/* Mobile: Hamburger */}
           <div className="md:hidden">
-            <select
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm"
-              value={page}
-              onChange={(e) => go(e.target.value)}
+            <button
+              aria-label="Open menu"
+              className="p-2 rounded-lg border border-slate-300"
+              onClick={() => setMenuOpen((v) => !v)}
             >
-              <option value="home">Home</option>
-              <option value="content">Content</option>
-              <option value="resources">Resources</option>
-              <option value="search">Search</option>
-            </select>
+              {/* Simple hamburger icon */}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="#2274C6" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Mobile menu panel */}
+        {menuOpen && (
+          <div className="md:hidden border-t border-slate-200 bg-white/95 backdrop-blur">
+            <div className="mx-auto max-w-7xl px-4 py-3 flex flex-col">
+              <MobileLink onClick={() => go("home")}>Home</MobileLink>
+              <MobileLink onClick={() => go("content")}>Newsletter</MobileLink>
+              <MobileLink onClick={() => go("resources")}>Resources</MobileLink>
+              <MobileLink onClick={() => go("search")}>Search</MobileLink>
+            </div>
+          </div>
+        )}
       </header>
 
       {page === "home" && <Home setPage={go} onSubscribe={subscribeToSubstack} />}
@@ -324,11 +340,11 @@ export default function App() {
           {/* Column 2: Quick links */}
           <div>
             <h4 className="font-medium">Quick links</h4>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li><button className="hover:underline" onClick={() => go("home")}>Home</button></li>
-              <li><button className="hover:underline" onClick={() => go("content")}>Latest Content</button></li>
-              <li><button className="hover:underline" onClick={() => go("resources")}>Resources</button></li>
-              <li><button className="hover:underline" onClick={() => go("search")}>Search</button></li>
+            <ul className="mt-3 space-y-4 sm:space-y-3 md:space-y-2 text-sm">
+              <li><button className="block py-2 md:py-1 hover:underline" onClick={() => go("home")}>Home</button></li>
+              <li><button className="block py-2 md:py-1 hover:underline" onClick={() => go("content")}>Newsletter</button></li>
+              <li><button className="block py-2 md:py-1 hover:underline" onClick={() => go("resources")}>Resources</button></li>
+              <li><button className="block py-2 md:py-1 hover:underline" onClick={() => go("search")}>Search</button></li>
             </ul>
           </div>
 
@@ -365,10 +381,21 @@ function NavItem({ label, active, onClick }) {
   );
 }
 
+function MobileLink({ children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="text-left py-2 px-1 text-base font-medium text-[#2274C6]"
+    >
+      {children}
+    </button>
+  );
+}
+
 function Section({ eyebrow, title, subtitle, children, kicker }) {
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <div className="grid md:grid-cols-12 gap-10 items-start">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
+      <div className="grid md:grid-cols-12 gap-8 md:gap-10 items-start">
         <div className="md:col-span-5">
           {eyebrow && <p className="text-xs tracking-widest uppercase text-slate-500">{eyebrow}</p>}
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mt-2">{title}</h2>
@@ -406,8 +433,8 @@ function Home({ setPage, onSubscribe }) {
 
         {/* Reduced top/bottom padding to match content page feel */}
         <div className="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
-          {/* Force side-by-side across all screen sizes */}
-          <div className="grid grid-cols-2 items-center gap-4 sm:gap-8 lg:gap-16">
+          {/* Mobile: stack as a single column; Desktop: two columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 sm:gap-8 lg:gap-16">
             {/* Text (left) */}
             <div className="flex flex-col justify-center">
               <p className="text-[10px] sm:text-xs tracking-widest uppercase text-slate-500">Weekly Newsletter</p>
@@ -418,8 +445,8 @@ function Home({ setPage, onSubscribe }) {
                 Clear, practical insight on AI governance, safety, and inclusion with a special lens on emerging ecosystems.
               </p>
 
-              {/* Buttons */}
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              {/* Desktop & tablet buttons (keep under text) */}
+              <div className="mt-8 hidden md:flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => setPage("content")}
                   className="rounded-2xl bg-[#2274C6] text-white px-6 py-3 text-sm font-medium hover:bg-[#2B6DE2]"
@@ -435,8 +462,8 @@ function Home({ setPage, onSubscribe }) {
               </div>
             </div>
 
-            {/* Image (right) */}
-            <div className="flex items-center justify-end">
+            {/* Image (right / below on mobile) */}
+            <div className="flex items-center justify-center md:justify-end">
               <img
                 src="/images/hero-art.svg"
                 alt="Responsible AI illustration"
@@ -445,6 +472,24 @@ function Home({ setPage, onSubscribe }) {
                 decoding="async"
                 sizes="(min-width: 1280px) 32rem, (min-width: 1024px) 28rem, (min-width: 640px) 24rem, 18rem"
               />
+            </div>
+
+            {/* Mobile-only buttons: placed AFTER image to match requested order */}
+            <div className="md:hidden">
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  onClick={() => setPage("content")}
+                  className="rounded-2xl bg-[#2274C6] text-white px-6 py-3 text-sm font-medium hover:bg-[#2B6DE2]"
+                >
+                  Read the latest
+                </button>
+                <button
+                  onClick={() => setPage("resources")}
+                  className="rounded-2xl border border-slate-300 px-6 py-3 text-sm font-medium hover:bg-slate-50"
+                >
+                  Explore
+                </button>
+              </div>
             </div>
           </div>
         </div>
