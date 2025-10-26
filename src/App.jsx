@@ -487,7 +487,7 @@ function Home({ setPage, onSubscribe }) {
                   onClick={() => setPage("resources")}
                   className="rounded-2xl border border-slate-300 px-6 py-3 text-sm font-medium hover:bg-slate-50"
                 >
-                  Explore
+                  Explore resources
                 </button>
               </div>
             </div>
