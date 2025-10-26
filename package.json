@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.mjs",
-    "vercel-build": "node scripts/build.mjs",  // fallback some presets look for
+    "vercel-build": "node scripts/build.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,5 +18,7 @@
     "postcss": "^8.4.0",
     "autoprefixer": "^10.4.0"
   },
-  "engines": { "node": "20.x" }
+  "engines": {
+    "node": "20.x"
+  }
 }
