@@ -684,7 +684,7 @@ function Search({ query, setQuery, filtered }) {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Try ‘evaluation’ or ‘DPI’"
+              placeholder="Try ‘AI’ or ‘Policy’"
               className="w-full rounded-xl border border-slate-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2274C6]"
             />
             <button className="rounded-xl bg-[#2274C6] text-white px-5 py-2 text-sm font-medium hover:bg-[#2B6DE2]">
